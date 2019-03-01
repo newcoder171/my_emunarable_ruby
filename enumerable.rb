@@ -57,7 +57,19 @@ module Enumerable
     marker
   end
 
+  def my_count
+    count = 0;
+    self.my_each { count += 1}
+    count
+  end
+
+  def my_map
+    self.my_each do |n|
+
+    end
+  end
+
 end
 
 [1,2,4,5].my_each_with_index { |n, m| puts "#{m}: #{n}"}
-puts [1,2,3,5].my_none? { |n| n>2}
+puts [1,2,3,5].my_count

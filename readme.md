@@ -1,6 +1,7 @@
-Bubble Sort
+Enumerable
 
-This is an implementation of the Enumerable module in ruby that can be used to work arrays.
+This is a custom written version of the Ruby Enumerable module
+
 
 Contributors
 1. Elvis Mumani    :@mumani
