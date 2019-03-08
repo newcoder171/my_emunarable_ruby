@@ -19,7 +19,7 @@ module Enumerable
 
   def my_select
     selected = []
-    self.my_each do |n|
+    my_each do |n|
       if yield n
         selected << n
       end
@@ -29,7 +29,7 @@ module Enumerable
 
   def my_all?
     marker = true
-    self.my_each do |n|
+    my_each do |n|
       if !yield n
         marker = false
       end
@@ -49,7 +49,7 @@ module Enumerable
 
   def my_none?
     marker = true
-    self.my_each do |n|
+    my_each do |n|
       if yield n
         marker = false
       end
@@ -58,13 +58,13 @@ module Enumerable
   end
 
   def my_count
-    count = 0;
-    self.my_each { count += 1}
+    count = 0
+    my_each { count += 1}
     count
   end
 
   def my_map
-    self.my_each do |n|
+    my_each do |n|
 
     end
   end
