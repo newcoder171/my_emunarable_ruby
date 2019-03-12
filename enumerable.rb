@@ -30,9 +30,7 @@ module Enumerable
   def my_all?
     marker = true
     my_each do |n|
-      if !yield n
-        marker = false
-      end
+      marker = false unless yield n
     end
     marker
   end
@@ -50,7 +48,7 @@ module Enumerable
   def my_none?
     marker = true
     my_each do |n|
-      if yield n
+      unless !yield n
         marker = false
       end
     end
@@ -64,12 +62,11 @@ module Enumerable
   end
 
   def my_map
+    new_item = []
     my_each do |n|
-
+      new_item.push(yield n)
     end
+    new_item
   end
 
 end
-
-[1,2,4,5].my_each_with_index { |n, m| puts "#{m}: #{n}"}
-puts [1,2,3,5].my_count
