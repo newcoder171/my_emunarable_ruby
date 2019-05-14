@@ -19,7 +19,7 @@ module Enumerable
 
   def my_select
     selected = []
-    self.my_each do |n|
+    my_each do |n|
       if yield n
         selected << n
       end
@@ -29,10 +29,8 @@ module Enumerable
 
   def my_all?
     marker = true
-    self.my_each do |n|
-      if !yield n
-        marker = false
-      end
+    my_each do |n|
+      marker = false unless yield n
     end
     marker
   end
@@ -49,15 +47,26 @@ module Enumerable
 
   def my_none?
     marker = true
-    self.my_each do |n|
-      if yield n
+    my_each do |n|
+      unless !yield n
         marker = false
       end
     end
     marker
   end
 
+  def my_count
+    count = 0
+    my_each { count += 1}
+    count
   end
 
-[1,2,4,5].my_each_with_index { |n, m| puts "#{m}: #{n}"}
-puts [1,2,3,5].my_none? { |n| n>2}
+  def my_map
+    new_item = []
+    my_each do |n|
+      new_item.push(yield n)
+    end
+    new_item
+  end
+
+end
